@@ -1,0 +1,32 @@
+<style>
+    thead,tbody
+    {
+        text-align:center;
+    }
+</style>
+<h1>App Component</h1>
+<h3>API Fetched Data </h3>
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>User ID</th>
+                <th>User Name</th>
+            </tr>
+        </thead>
+        <tbody class="table-dark">
+            <tr *ngFor ="let user of users">
+                <td>{{user.id}}</td>
+                <td>{{user.userName}}</td>
+            </tr>
+        </tbody>
+        <!-- <tbody class="table-dark">
+            <tr>
+                <td>{{users.id}}</td>
+                <td>{{users.userName}}</td>
+            </tr>
+        </tbody> -->
+    </table>
+    <hr>
+    <button class="btn btn-primary" (submit)= "ShowUsersType()">Click Me</button>
+</div>
