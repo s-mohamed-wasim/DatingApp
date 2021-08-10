@@ -13,13 +13,13 @@
                 <th>User ID</th>
                 <th>User Name</th>
             </tr>
-        </thead>
-        <tbody class="table-dark">
+        </thead>  
+        <!-- <tbody class="table-dark">
             <tr *ngFor ="let user of users">
                 <td>{{user.id}}</td>
                 <td>{{user.userName}}</td>
             </tr>
-        </tbody>
+        </tbody> -->
         <!-- <tbody class="table-dark">
             <tr>
                 <td>{{users.id}}</td>
@@ -28,5 +28,25 @@
         </tbody> -->
     </table>
     <hr>
-    <button class="btn btn-primary" (submit)= "ShowUsersType()">Click Me</button>
-</div>
+    <div class="form-group">
+        <label class="form-label">Enter User ID</label>
+        <input type="number" class="form-control" name="userid" #uid>
+    </div>
+    <button type="button" class="btn btn-primary" (click) ="ShowUser(uid.value)">Click Me</button>
+</div> 
+<hr><hr>
+<form #registerForm="ngForm" (ngSubmit) = "register()">
+    <div class="form-group">
+        <input class="form-control" type="text" name="username" [(ngModel)]="body1.username" placeholder="UserName" />
+    </div>
+
+    <div class="form-group">
+        <input class="form-control" type="password" name="password" [(ngModel)]="body1.password" placeholder="Password"/>
+    </div>
+
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+
+
+</form>

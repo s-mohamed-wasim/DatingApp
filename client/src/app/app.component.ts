@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,22 +9,39 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'client';
   users:any;
+  x=1;
 
-  ShowUsersType()
-  {
-    alert(typeof this.users);
-  }
-
-  constructor(private http : HttpClient) {}
-  
-  ngOnInit(){
+  ShowUser(num:any)
+  { 
+    this.x = num;
     this.GetUsers();
+  }
+  
+  constructor(private http : HttpClient) {}
+
+  body:any={
+    "username":"vijay",
+    "password":"vj123"
+  };
+  body1:any={};
+  ngOnInit(){
+    //this.GetUsers();
   }
 
   GetUsers()
   {
-    this.http.get('https://localhost:5001/users').subscribe(response => {
+    this.http.post('https://localhost:5001/account/register',this.body1).subscribe(response => {
       this.users = response;
+      console.log("response is =>"+response);
+    },error => {
+      console.log(error);
+    })
+  }
+  
+  register()
+  {
+    this.http.post('https://localhost:5001/account/register',this.body1).subscribe(response => {
+      console.log("response is =>"+response);
     },error => {
       console.log(error);
     })
