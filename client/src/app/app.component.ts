@@ -1,5 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { User } from 'src/_models/user';
+import { AccountService } from './_services/account.service';
 
 @Component({
   selector: 'app-root',
@@ -9,41 +11,19 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit{
   title = 'client';
   users:any;
-  x=1;
-
-  ShowUser(num:any)
-  { 
-    this.x = num;
-    this.GetUsers();
-  }
   
-  constructor(private http : HttpClient) {}
+  constructor(private http : HttpClient,private accountService : AccountService) {}
 
-  body:any={
-    "username":"vijay",
-    "password":"vj123"
-  };
-  body1:any={};
+  body:any={};
+
   ngOnInit(){
-    //this.GetUsers();
+    this.SetCurrentUser();
   }
 
-  GetUsers()
+  SetCurrentUser()
   {
-    this.http.post('https://localhost:5001/account/register',this.body1).subscribe(response => {
-      this.users = response;
-      console.log("response is =>"+response);
-    },error => {
-      console.log(error);
-    })
+    const user : User = JSON.parse(localStorage.getItem('user'));
+    this.accountService.setCurrentUser(user);
   }
-  
-  register()
-  {
-    this.http.post('https://localhost:5001/account/register',this.body1).subscribe(response => {
-      console.log("response is =>"+response);
-    },error => {
-      console.log(error);
-    })
-  }
+
 }
