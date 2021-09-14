@@ -1,4 +1,3 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/_models/user';
 import { AccountService } from './_services/account.service';
@@ -12,7 +11,7 @@ export class AppComponent implements OnInit{
   title = 'client';
   users:any;
   
-  constructor(private http : HttpClient,private accountService : AccountService) {}
+  constructor(private accountService : AccountService) {}
 
   body:any={};
 
