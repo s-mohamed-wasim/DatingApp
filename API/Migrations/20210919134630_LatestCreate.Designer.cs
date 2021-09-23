@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210913102113_latest_create")]
-    partial class latest_create
+    [Migration("20210919134630_LatestCreate")]
+    partial class LatestCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
